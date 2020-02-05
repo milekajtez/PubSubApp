@@ -271,7 +271,7 @@ DWORD WINAPI FunctionRecvSUB(LPVOID lpParam)
 		if (iResult <= 0)
 		{
 			char stringSocket[DEFAULT_BUFFLEN];
-			_itoa(acceptedSocketSUB, stringSocket, 10);
+			_itoa((int)acceptedSocketSUB, stringSocket, 10);
 			printf("Subcriber number %s is shutdown.\n", stringSocket);
 
 			//cleaning sutrcture when subscriber shutdown
@@ -296,7 +296,7 @@ DWORD WINAPI FunctionRecvSUB(LPVOID lpParam)
 			char* topicSUB = recvBuffer;
 			char* socketString = (char*)malloc(sizeof(char)* DEFAULT_BUFFLEN);
 
-			_itoa(acceptedSocketSUB, socketString, 10);
+			_itoa((int)acceptedSocketSUB, socketString, 10);
 			printf("TOPIC: '%s' from subscriber number %s\n", topicSUB, socketString);
 			printf("--------------------------------\n");
 
@@ -324,7 +324,7 @@ DWORD WINAPI FunctionRecvSUB(LPVOID lpParam)
 		if (iResult <= 0)
 		{
 			char stringSocket[DEFAULT_BUFFLEN];
-			_itoa(acceptedSocketSUB, stringSocket, 10);
+			_itoa((int)acceptedSocketSUB, stringSocket, 10);
 			printf("Subcriber number %s is shutdown.\n", stringSocket);
 
 			//cleaning sutrcture when subscriber shutdown
@@ -354,7 +354,7 @@ DWORD WINAPI FunctionSendSUB(LPVOID lpParam)
 	int iResult = NULL;
 
 	char* socketString = (char*)malloc(sizeof(char)* DEFAULT_BUFFLEN);
-	_itoa(acceptedSocketSUB, socketString, 10);
+	_itoa((int)acceptedSocketSUB, socketString, 10);
 
 	char* messageSUB = (char*)malloc(sizeof(char)* DEFAULT_BUFFLEN);
 	char* sendBuffer = (char*)malloc(sizeof(char)* DEFAULT_BUFFLEN + 4);		//+4 for message length
@@ -367,7 +367,7 @@ DWORD WINAPI FunctionSendSUB(LPVOID lpParam)
 	{
 		do
 		{
-			printf("Brisnje treba da radi...%s\n", _itoa(acceptedSocketSUB, socketString, 10));
+			printf("Brisnje treba da radi...%s\n", _itoa((int)acceptedSocketSUB, socketString, 10));
 
 			if (currentSocket->frontElement != NULL)
 			{
